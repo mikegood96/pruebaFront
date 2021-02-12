@@ -1,0 +1,43 @@
+<div style="width: 400px; margin: auto;">
+  <div *ngIf="currentFruta" class="edit-form">
+    <h4>Fruta</h4>
+    <form>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre"
+          [(ngModel)]="currentFruta.nombre" name="nombre" required />
+      </div>
+      <div class="form-group">
+        <label for="size">Tamaño</label>
+        <select class="custom-select" name="size" id="size"
+                [(ngModel)]="currentFruta.size" required>
+          <option value="pequeño">pequeño</option>
+          <option value="mediano">mediano</option>
+          <option value="grande">grande</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="color">Color</label>
+        <input type="text" class="form-control" id="color"
+          [(ngModel)]="currentFruta.color" name="color" />
+      </div>
+    </form>
+
+    <button type="submit" class="btn btn-success text-uppercase mr-2"
+            (click)="updateFruta()">
+      Actualizar
+    </button>
+    <button class="btn btn-danger text-uppercase"
+            (click)="deleteFruta()">
+      Eliminar
+    </button>
+    <button class="btn btn-info ml-2 text-uppercase" routerLink="/">Volver al listado</button>
+
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentFruta">
+    <br />
+    <p>No se ha podido acceder a esta fruta.</p>
+  </div>
+</div>

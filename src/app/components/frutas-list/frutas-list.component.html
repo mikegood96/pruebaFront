@@ -1,0 +1,47 @@
+<div class="list row">
+
+  <div class="col-md-6">
+    <h4>Frutas List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let fruta of frutas?.frutas; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveFruta(fruta, i)"
+      >
+        {{ fruta.nombre }}
+      </li>
+    </ul>
+    <button class="m-3 btn btn-sm btn-success" routerLink="/add">
+      Añadir nueva fruta
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentFruta">
+      <h4>Fruta</h4>
+      <div>
+        <label><strong>id:</strong></label> {{ currentFruta.id }}
+      </div>
+      <div>
+        <label><strong>Nombre:</strong></label> {{ currentFruta.nombre }}
+      </div>
+      <div>
+        <label><strong>Tamaño:</strong></label>
+        {{ currentFruta.size }}
+      </div>
+      <div>
+        <label><strong>Color:</strong></label>
+        {{ currentFruta.color }}
+      </div>
+
+      <a class="badge badge-warning p-2 text-uppercase" routerLink="/frutas/{{ currentFruta.id }}">
+        Editar
+      </a>
+    </div>
+
+    <div *ngIf="!currentFruta">
+      <br />
+      <p>Click en una fruta para ver más detalles</p>
+    </div>
+  </div>
+</div>
